@@ -23,13 +23,11 @@ public class SysLog {
     @TableId(value = "id",type = IdType.AUTO)
     private Long id;
 
-    @TableField("level1_menu")
     private String level1Menu;
 
-    @TableField("level2_menu")
+    @TableField(exist = false)
     private String level2Menu;
 
-    @TableField("level3_menu")
     private String level3Menu;
 
 //    private String category;
@@ -42,7 +40,6 @@ public class SysLog {
 
     private String message;
 
-    @TableField("gmt_create")
     private Date gmtCreate;
 
     private Integer status = 1;
@@ -50,18 +47,5 @@ public class SysLog {
     /**
      * 当前处理对象的json格式，
      */
-    @TableField("log_data")
     private JSONObject logData;
-
-    /**
-     * 封装字符串类型
-     */
-    private String logDataStr;
-
-
-    public void setLogData(JSONObject logData) {
-        this.logData = logData;
-        this.logDataStr = JSON.toJSONString(logData);
-        setGmtCreate(new Date());
-    }
 }
